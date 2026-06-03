@@ -1,76 +1,161 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
-    <title>Shaik Muskan Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        ul {
-            line-height: 1.8;
-        }
-    </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaik Muskan Portfolio</title><style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-<div class="container">
-    <h1>Shaik Muskan</h1>
-    <p>B.Tech CSE (AI) | Java Developer | Data Analyst | AI/ML Enthusiast</p>
+body{
+background:#0f172a;
+color:white;
+line-height:1.6;
+}
 
-    <h2>About Me</h2>
-    <p>
-        Computer Science and Engineering (AI) graduate with experience in
-        Java Full Stack Development, Data Analytics, Machine Learning,
-        Spring Boot, SQL, and REST APIs.
-    </p>
+header{
+text-align:center;
+padding:80px 20px;
+background:linear-gradient(135deg,#1e293b,#0f172a);
+}
 
-    <h2>Skills</h2>
-    <ul>
-        <li>Java</li>
-        <li>Python</li>
-        <li>SQL & MySQL</li>
-        <li>Spring Boot</li>
-        <li>Machine Learning</li>
-        <li>NLP</li>
-        <li>HTML & CSS</li>
-        <li>Power BI</li>
-    </ul>
+header h1{
+font-size:48px;
+margin-bottom:10px;
+}
 
-    <h2>Projects</h2>
-    <ul>
-        <li><b>AI Chatbot</b> - NLP-based chatbot with 85% accuracy.</li>
-        <li><b>Knee Osteoarthritis Detection</b> - CNN model with 90%+ accuracy.</li>
-        <li><b>Automatic Sanitation in Railway Compartments</b> - IoT Hackathon Project.</li>
-    </ul>
+header p{
+font-size:22px;
+color:#cbd5e1;
+}
 
-    <h2>Internships</h2>
-    <ul>
-        <li>Java Full Stack Intern - Skill Dzire</li>
-        <li>Data Analytics Intern - Codeworks</li>
-    </ul>
+.buttons{
+margin-top:25px;
+}
 
-    <h2>Certifications</h2>
-    <ul>
-        <li>Python Programming - Cisco</li>
-        <li>Full Stack Web Development - Edureka</li>
-        <li>Artificial Intelligence - Native Techno</li>
-    </ul>
+.btn{
+display:inline-block;
+margin:10px;
+padding:12px 22px;
+background:#2563eb;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+}
 
-    <h2>Contact</h2>
-    <p>Email: shaikmuskanofficial02@gmail.com</p>
-    <p>GitHub: github.com/Smuskan3145</p>
-    <p>LinkedIn: linkedin.com/in/shaik-m-0b6963264</p>
+.btn:hover{
+background:#1d4ed8;
+}
+
+section{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+h2{
+color:#60a5fa;
+margin-bottom:15px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+margin:15px 0;
+border-radius:10px;
+}
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+}
+
+.skill{
+background:#1e293b;
+padding:12px;
+border-radius:8px;
+text-align:center;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#1e293b;
+margin-top:40px;
+}
+</style></head><body><header>
+<h1>Shaik Muskan</h1>
+<p>Java Full Stack Developer | Data Analyst | AI/ML Enthusiast</p><div class="buttons">
+<a class="btn" href="resume.pdf">Download Resume</a>
+<a class="btn" href="https://github.com/Smuskan3145">GitHub</a>
+<a class="btn" href="https://www.linkedin.com/in/shaik-m-0b6963264">LinkedIn</a>
+<a class="btn" href="mailto:shaikmuskanofficial02@gmail.com">Contact Me</a>
 </div>
-
-</body>
+</header><section>
+<h2>About Me</h2><div class="card">
+Computer Science and Engineering (Artificial Intelligence) graduate with hands-on experience in Java Full Stack Development, Data Analytics, Machine Learning, and REST API development. Skilled in Java, Python, SQL, Spring Boot, Power BI, and AI-driven solutions. Passionate about building scalable software applications and solving real-world problems through technology.
+</div>
+</section><section>
+<h2>Skills</h2><div class="skills">
+<div class="skill">Java</div>
+<div class="skill">Python</div>
+<div class="skill">SQL</div>
+<div class="skill">MySQL</div>
+<div class="skill">Spring Boot</div>
+<div class="skill">HTML</div>
+<div class="skill">CSS</div>
+<div class="skill">JavaScript</div>
+<div class="skill">Machine Learning</div>
+<div class="skill">NLP</div>
+<div class="skill">CNN</div>
+<div class="skill">Power BI</div>
+<div class="skill">Git</div>
+<div class="skill">GitHub</div>
+</div>
+</section><section>
+<h2>Projects</h2><div class="card">
+<h3>AI Chatbot</h3>
+<p>NLP-based chatbot with 85% response accuracy.</p>
+</div><div class="card">
+<h3>Knee Osteoarthritis Detection</h3>
+<p>CNN-based deep learning model with 90%+ accuracy.</p>
+</div><div class="card">
+<h3>Automatic Sanitation in Railway Compartments</h3>
+<p>IoT-based sanitation monitoring system.</p>
+</div>
+</section><section>
+<h2>Internships</h2><div class="card">
+<h3>Java Full Stack Intern - Skill Dzire</h3>
+<p>Worked on Java, Spring Boot and REST API development.</p>
+</div><div class="card">
+<h3>Data Analytics Intern - Codeworks</h3>
+<p>Worked with Excel, SQL, Python and Power BI.</p>
+</div>
+</section><section>
+<h2>Education</h2><div class="card">
+B.Tech – Computer Science and Engineering (Artificial Intelligence)<br>
+CGPA: 7.56 / 10
+</div>
+</section><section>
+<h2>Certifications</h2><div class="card">
+Python Programming – Cisco
+</div><div class="card">
+Full Stack Web Development – Edureka
+</div><div class="card">
+Artificial Intelligence – Native Techno
+</div>
+</section><section>
+<h2>Contact</h2><div class="card">
+Email: shaikmuskanofficial02@gmail.com<br>
+GitHub: github.com/Smuskan3145<br>
+LinkedIn: linkedin.com/in/shaik-m-0b6963264
+</div>
+</section><footer>
+© 2026 Shaik Muskan Portfolio
+</footer></body>
 </html>
