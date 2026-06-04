@@ -1,161 +1,472 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shaik Muskan Portfolio</title><style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+<title>Shaik Muskan Portfolio</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Arial,sans-serif; }
+
+body { background:#0f172a; color:white; line-height:1.6; scroll-behavior:smooth; }
+
+/* NAV */
+nav {
+  position:fixed; top:0; width:100%; background:rgba(15,23,42,0.95);
+  padding:15px 40px; display:flex; justify-content:space-between;
+  align-items:center; z-index:1000; backdrop-filter:blur(10px);
+  border-bottom:1px solid #1e293b;
+}
+nav .logo { font-size:20px; font-weight:bold; color:#60a5fa; }
+nav ul { list-style:none; display:flex; gap:25px; }
+nav ul li a { color:#cbd5e1; text-decoration:none; font-size:14px; transition:color 0.3s; }
+nav ul li a:hover { color:#60a5fa; }
+
+/* HEADER */
+header {
+  text-align:center; padding:140px 20px 80px;
+  background:linear-gradient(135deg,#1e293b 0%,#0f172a 50%,#1e1b4b 100%);
+  position:relative; overflow:hidden;
+}
+header::before {
+  content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+  background:radial-gradient(ellipse at center, rgba(96,165,250,0.1) 0%, transparent 70%);
+}
+.header-badge {
+  display:inline-block; background:rgba(96,165,250,0.15); border:1px solid rgba(96,165,250,0.3);
+  color:#60a5fa; padding:6px 18px; border-radius:50px; font-size:13px;
+  margin-bottom:20px; letter-spacing:1px;
+}
+header h1 { font-size:52px; margin-bottom:12px; font-weight:700;
+  background:linear-gradient(135deg,#ffffff,#60a5fa); -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent; }
+header p { font-size:20px; color:#94a3b8; margin-bottom:30px; }
+.typing { color:#60a5fa; font-weight:600; }
+
+.buttons { margin-top:30px; }
+.btn {
+  display:inline-block; margin:8px; padding:13px 26px;
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:white; text-decoration:none; border-radius:8px;
+  font-weight:600; font-size:14px; transition:all 0.3s;
+  border:1px solid rgba(255,255,255,0.1);
+}
+.btn:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(37,99,235,0.4); }
+.btn-outline {
+  background:transparent; border:2px solid #2563eb; color:#60a5fa;
+}
+.btn-outline:hover { background:#2563eb; color:white; }
+
+/* STATS */
+.stats {
+  display:flex; justify-content:center; gap:40px;
+  padding:40px 20px; background:#0f172a; flex-wrap:wrap;
+}
+.stat { text-align:center; }
+.stat-number { font-size:36px; font-weight:700; color:#60a5fa; }
+.stat-label { color:#64748b; font-size:13px; margin-top:4px; }
+
+/* SECTIONS */
+section { max-width:1000px; margin:auto; padding:60px 20px; }
+.section-title {
+  color:#60a5fa; font-size:28px; margin-bottom:8px;
+  display:flex; align-items:center; gap:10px;
+}
+.section-divider {
+  width:60px; height:3px;
+  background:linear-gradient(90deg,#2563eb,#60a5fa);
+  border-radius:2px; margin-bottom:30px;
 }
 
-body{
-background:#0f172a;
-color:white;
-line-height:1.6;
+/* CARDS */
+.card {
+  background:#1e293b; padding:25px; margin:15px 0;
+  border-radius:12px; border:1px solid #334155;
+  transition:all 0.3s;
 }
+.card:hover { border-color:#2563eb; transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(37,99,235,0.15); }
 
-header{
-text-align:center;
-padding:80px 20px;
-background:linear-gradient(135deg,#1e293b,#0f172a);
+/* SKILLS */
+.skills { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; }
+.skill {
+  background:#1e293b; padding:14px 10px; border-radius:10px;
+  text-align:center; font-size:14px; border:1px solid #334155;
+  transition:all 0.3s; cursor:default;
 }
+.skill:hover { background:#2563eb; border-color:#2563eb; transform:scale(1.05); }
 
-header h1{
-font-size:48px;
-margin-bottom:10px;
+/* PROJECTS */
+.project-card {
+  background:#1e293b; padding:25px; margin:15px 0;
+  border-radius:12px; border:1px solid #334155;
+  transition:all 0.3s;
 }
+.project-card:hover { border-color:#60a5fa; transform:translateY(-3px);
+  box-shadow:0 10px 35px rgba(96,165,250,0.15); }
+.project-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; }
+.project-title { font-size:18px; font-weight:700; color:#f1f5f9; margin-bottom:8px; }
+.project-tech { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.tech-tag {
+  background:rgba(37,99,235,0.2); color:#60a5fa; padding:4px 12px;
+  border-radius:20px; font-size:12px; border:1px solid rgba(96,165,250,0.3);
+}
+.project-desc { color:#94a3b8; font-size:14px; line-height:1.7; }
+.github-link {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(255,255,255,0.05); color:#60a5fa;
+  padding:7px 16px; border-radius:6px; text-decoration:none;
+  font-size:13px; border:1px solid #334155; transition:all 0.3s;
+}
+.github-link:hover { background:#2563eb; color:white; border-color:#2563eb; }
 
-header p{
-font-size:22px;
-color:#cbd5e1;
+/* ACHIEVEMENTS */
+.achievement-card {
+  background:#1e293b; padding:20px 25px; margin:12px 0;
+  border-radius:12px; border-left:4px solid #f59e0b;
+  display:flex; align-items:center; gap:15px;
 }
+.achievement-icon { font-size:28px; }
+.achievement-text h3 { font-size:16px; color:#f1f5f9; margin-bottom:4px; }
+.achievement-text p { color:#94a3b8; font-size:13px; }
 
-.buttons{
-margin-top:25px;
+/* INTERNSHIP */
+.intern-card {
+  background:#1e293b; padding:25px; margin:15px 0;
+  border-radius:12px; border:1px solid #334155;
 }
+.intern-header { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+.intern-title { font-size:17px; font-weight:700; color:#f1f5f9; }
+.intern-date { color:#60a5fa; font-size:13px; background:rgba(96,165,250,0.1);
+  padding:3px 12px; border-radius:20px; }
+.intern-company { color:#94a3b8; font-size:14px; margin-bottom:8px; }
+.intern-points { color:#cbd5e1; font-size:14px; padding-left:18px; }
+.intern-points li { margin:5px 0; }
 
-.btn{
-display:inline-block;
-margin:10px;
-padding:12px 22px;
-background:#2563eb;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
+/* EDUCATION */
+.edu-card {
+  background:#1e293b; padding:25px; border-radius:12px;
+  border:1px solid #334155; display:flex; justify-content:space-between;
+  align-items:center; flex-wrap:wrap; gap:15px;
 }
+.edu-info h3 { font-size:17px; font-weight:700; color:#f1f5f9; margin-bottom:5px; }
+.edu-info p { color:#94a3b8; font-size:14px; }
+.cgpa { background:linear-gradient(135deg,#2563eb,#60a5fa);
+  padding:12px 20px; border-radius:10px; text-align:center; }
+.cgpa-number { font-size:24px; font-weight:700; }
+.cgpa-label { font-size:11px; color:rgba(255,255,255,0.8); }
 
-.btn:hover{
-background:#1d4ed8;
+/* CERTIFICATIONS */
+.cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:15px; }
+.cert-card {
+  background:#1e293b; padding:20px; border-radius:12px;
+  border:1px solid #334155; display:flex; align-items:center; gap:15px;
 }
+.cert-icon { font-size:28px; }
+.cert-info h3 { font-size:15px; font-weight:600; color:#f1f5f9; }
+.cert-info p { color:#60a5fa; font-size:13px; }
 
-section{
-max-width:1000px;
-margin:auto;
-padding:40px 20px;
+/* CONTACT */
+.contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; }
+.contact-item {
+  background:#1e293b; padding:20px; border-radius:12px;
+  border:1px solid #334155; display:flex; align-items:center; gap:15px;
+  text-decoration:none; color:white; transition:all 0.3s;
 }
+.contact-item:hover { border-color:#2563eb; transform:translateY(-2px); }
+.contact-icon { font-size:24px; }
+.contact-info p { color:#94a3b8; font-size:12px; }
+.contact-info span { font-size:14px; color:#f1f5f9; }
 
-h2{
-color:#60a5fa;
-margin-bottom:15px;
+/* FOOTER */
+footer {
+  text-align:center; padding:30px 20px;
+  background:#1e293b; margin-top:40px;
+  border-top:1px solid #334155; color:#64748b; font-size:14px;
 }
+footer span { color:#60a5fa; }
+</style>
+</head>
+<body>
 
-.card{
-background:#1e293b;
-padding:20px;
-margin:15px 0;
-border-radius:10px;
-}
+<!-- NAV -->
+<nav>
+  <div class="logo">SM</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#internships">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-.skills{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:15px;
-}
+<!-- HEADER -->
+<header>
+  <div class="header-badge">🎓 B.Tech CSE (AI) — CBIT, 2026</div>
+  <h1>Shaik Muskan</h1>
+  <p><span class="typing">Java Full Stack Developer</span> | Data Analyst | AI/ML Enthusiast</p>
+  <div class="buttons">
+    <a class="btn" href="resume.pdf">📄 Download Resume</a>
+    <a class="btn" href="https://github.com/Smuskan3145" target="_blank">🐙 GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/shaik-m-0b6963264" target="_blank">💼 LinkedIn</a>
+    <a class="btn btn-outline" href="mailto:shaikmuskanofficial02@gmail.com">✉️ Contact Me</a>
+  </div>
+</header>
 
-.skill{
-background:#1e293b;
-padding:12px;
-border-radius:8px;
-text-align:center;
-}
-
-footer{
-text-align:center;
-padding:20px;
-background:#1e293b;
-margin-top:40px;
-}
-</style></head><body><header>
-<h1>Shaik Muskan</h1>
-<p>Java Full Stack Developer | Data Analyst | AI/ML Enthusiast</p><div class="buttons">
-<a class="btn" href="resume.pdf">Download Resume</a>
-<a class="btn" href="https://github.com/Smuskan3145">GitHub</a>
-<a class="btn" href="https://www.linkedin.com/in/shaik-m-0b6963264">LinkedIn</a>
-<a class="btn" href="mailto:shaikmuskanofficial02@gmail.com">Contact Me</a>
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-number">2+</div><div class="stat-label">Internships</div></div>
+  <div class="stat"><div class="stat-number">3</div><div class="stat-label">Projects</div></div>
+  <div class="stat"><div class="stat-number">3🥇</div><div class="stat-label">Hackathon Prizes</div></div>
+  <div class="stat"><div class="stat-number">7.56</div><div class="stat-label">CGPA</div></div>
+  <div class="stat"><div class="stat-number">3</div><div class="stat-label">Certifications</div></div>
 </div>
-</header><section>
-<h2>About Me</h2><div class="card">
-Computer Science and Engineering (Artificial Intelligence) graduate with hands-on experience in Java Full Stack Development, Data Analytics, Machine Learning, and REST API development. Skilled in Java, Python, SQL, Spring Boot, Power BI, and AI-driven solutions. Passionate about building scalable software applications and solving real-world problems through technology.
-</div>
-</section><section>
-<h2>Skills</h2><div class="skills">
-<div class="skill">Java</div>
-<div class="skill">Python</div>
-<div class="skill">SQL</div>
-<div class="skill">MySQL</div>
-<div class="skill">Spring Boot</div>
-<div class="skill">HTML</div>
-<div class="skill">CSS</div>
-<div class="skill">JavaScript</div>
-<div class="skill">Machine Learning</div>
-<div class="skill">NLP</div>
-<div class="skill">CNN</div>
-<div class="skill">Power BI</div>
-<div class="skill">Git</div>
-<div class="skill">GitHub</div>
-</div>
-</section><section>
-<h2>Projects</h2><div class="card">
-<h3>AI Chatbot</h3>
-<p>NLP-based chatbot with 85% response accuracy.</p>
-</div><div class="card">
-<h3>Knee Osteoarthritis Detection</h3>
-<p>CNN-based deep learning model with 90%+ accuracy.</p>
-</div><div class="card">
-<h3>Automatic Sanitation in Railway Compartments</h3>
-<p>IoT-based sanitation monitoring system.</p>
-</div>
-</section><section>
-<h2>Internships</h2><div class="card">
-<h3>Java Full Stack Intern - Skill Dzire</h3>
-<p>Worked on Java, Spring Boot and REST API development.</p>
-</div><div class="card">
-<h3>Data Analytics Intern - Codeworks</h3>
-<p>Worked with Excel, SQL, Python and Power BI.</p>
-</div>
-</section><section>
-<h2>Education</h2><div class="card">
-B.Tech – Computer Science and Engineering (Artificial Intelligence)<br>
-CGPA: 7.56 / 10
-</div>
-</section><section>
-<h2>Certifications</h2><div class="card">
-Python Programming – Cisco
-</div><div class="card">
-Full Stack Web Development – Edureka
-</div><div class="card">
-Artificial Intelligence – Native Techno
-</div>
-</section><section>
-<h2>Contact</h2><div class="card">
-Email: shaikmuskanofficial02@gmail.com<br>
-GitHub: github.com/Smuskan3145<br>
-LinkedIn: linkedin.com/in/shaik-m-0b6963264
-</div>
-</section><footer>
-© 2026 Shaik Muskan Portfolio
-</footer></body>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-title">👩‍💻 About Me</div>
+  <div class="section-divider"></div>
+  <div class="card">
+    Computer Science and Engineering (AI) graduate with hands-on expertise in Java Full Stack Development,
+    Machine Learning, and Data Analytics. Skilled in building scalable backend systems, RESTful APIs, and
+    AI-driven solutions using Java, Python, Spring Boot, and SQL. Completed 2 industry internships and
+    delivered award-winning projects — including 1st Prize at CBIT Hackathon, 1st Prize at CMR Hackathon,
+    and 1st Prize at CodeSprint KSRM. Passionate about solving real-world problems through intelligent
+    software and data-driven insights.
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-title">🛠️ Technical Skills</div>
+  <div class="section-divider"></div>
+  <div class="skills">
+    <div class="skill">☕ Java</div>
+    <div class="skill">🐍 Python</div>
+    <div class="skill">🗄️ SQL</div>
+    <div class="skill">🗄️ MySQL</div>
+    <div class="skill">⚙️ Spring Boot</div>
+    <div class="skill">🌐 HTML</div>
+    <div class="skill">🎨 CSS</div>
+    <div class="skill">📊 Power BI</div>
+    <div class="skill">🤖 Machine Learning</div>
+    <div class="skill">💬 NLP</div>
+    <div class="skill">🧠 CNN</div>
+    <div class="skill">🔬 Deep Learning</div>
+    <div class="skill">🐙 Git</div>
+    <div class="skill">🐱 GitHub</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-title">🚀 Projects</div>
+  <div class="section-divider"></div>
+
+  <div class="project-card">
+    <div class="project-header">
+      <div>
+        <div class="project-title">🦴 Knee Osteoarthritis Detection using Ensemble CNN</div>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">CNN</span>
+          <span class="tech-tag">ResNet50</span>
+          <span class="tech-tag">MobileNetV2</span>
+          <span class="tech-tag">AlexNet</span>
+          <span class="tech-tag">Flask</span>
+          <span class="tech-tag">Deep Learning</span>
+        </div>
+      </div>
+      <a class="github-link" href="https://github.com/Smuskan3145/Knee-Osteoarthritis-Detection" target="_blank">🐙 GitHub</a>
+    </div>
+    <p class="project-desc">
+      An automated deep learning system that detects Knee Osteoarthritis severity stages from X-ray images
+      using an Ensemble CNN combining ResNet50, MobileNetV2, and AlexNet. Achieved 90%+ classification accuracy
+      with a real-time Flask web interface for instant predictions.
+    </p>
+  </div>
+
+  <div class="project-card">
+    <div class="project-header">
+      <div>
+        <div class="project-title">🤖 AI Chatbot using NLP</div>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">NLP</span>
+          <span class="tech-tag">Machine Learning</span>
+          <span class="tech-tag">Supervised Learning</span>
+        </div>
+      </div>
+      <a class="github-link" href="https://github.com/Smuskan3145/chatbot--using--ml" target="_blank">🐙 GitHub</a>
+    </div>
+    <p class="project-desc">
+      Developed an ML-powered chatbot using Natural Language Processing achieving 85% response accuracy.
+      Applied supervised learning methods to improve intent classification and enhance user experience.
+    </p>
+  </div>
+
+  <div class="project-card">
+    <div class="project-header">
+      <div>
+        <div class="project-title">🚆 Automatic Sanitation in Railway Compartments</div>
+        <div class="project-tech">
+          <span class="tech-tag">IoT</span>
+          <span class="tech-tag">Arduino</span>
+          <span class="tech-tag">Spraying Robot</span>
+          <span class="tech-tag">Sensors</span>
+        </div>
+      </div>
+      <a class="github-link" href="https://github.com/Smuskan3145/Automatic-Sanitation-Railway-Compartments" target="_blank">🐙 GitHub</a>
+    </div>
+    <p class="project-desc">
+      IoT-based automated sanitation system with a spraying robot and dirty toilet detection using Arduino sensors.
+      Designed for railway compartments to ensure real-time hygiene monitoring and automatic sanitization.
+      🥇 Won 1st Prize at CBIT Hackathon.
+    </p>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-title">🏆 Achievements & Competitions</div>
+  <div class="section-divider"></div>
+
+  <div class="achievement-card">
+    <div class="achievement-icon">🥇</div>
+    <div class="achievement-text">
+      <h3>1st Prize — CBIT Hackathon</h3>
+      <p>Won first place for IoT-based Automatic Sanitation project, recognized for innovation and technical excellence.</p>
+    </div>
+  </div>
+
+  <div class="achievement-card">
+    <div class="achievement-icon">🥇</div>
+    <div class="achievement-text">
+      <h3>1st Prize — CMR Hackathon</h3>
+      <p>Won first place demonstrating strong problem-solving, teamwork, and technical skills.</p>
+    </div>
+  </div>
+
+  <div class="achievement-card">
+    <div class="achievement-icon">🥇</div>
+    <div class="achievement-text">
+      <h3>1st Prize — CodeSprint, KSRM College of Engineering</h3>
+      <p>Won first place showcasing strong algorithmic and programming skills.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNSHIPS -->
+<section id="internships">
+  <div class="section-title">💼 Work Experience</div>
+  <div class="section-divider"></div>
+
+  <div class="intern-card">
+    <div class="intern-header">
+      <div class="intern-title">Java Full Stack Intern</div>
+      <div class="intern-date">Mar 2024 – Jul 2024</div>
+    </div>
+    <div class="intern-company">🏢 Skill Dzire</div>
+    <ul class="intern-points">
+      <li>Developed and optimized backend applications using Java & Spring Boot, improving API response performance by 30%.</li>
+      <li>Implemented RESTful APIs for real-time use cases, supporting seamless data exchange between frontend and backend.</li>
+      <li>Contributed to Email Spam Detection and Iris Flower Classification ML projects.</li>
+    </ul>
+  </div>
+
+  <div class="intern-card">
+    <div class="intern-header">
+      <div class="intern-title">Data Analytics Intern</div>
+      <div class="intern-date">Sep 2025 – Apr 2026</div>
+    </div>
+    <div class="intern-company">🏢 Codeworks</div>
+    <ul class="intern-points">
+      <li>Analyzed large datasets and extracted actionable business insights using Python, SQL, Excel, and Power BI.</li>
+      <li>Performed end-to-end data handling including cleaning, transformation, and visualization for client reporting.</li>
+      <li>Improved data processing efficiency by automating repetitive ETL tasks using Python scripts.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-title">🎓 Education</div>
+  <div class="section-divider"></div>
+  <div class="edu-card">
+    <div class="edu-info">
+      <h3>B.Tech – Computer Science & Engineering (Artificial Intelligence)</h3>
+      <p>Chaitanya Bharathi Institute of Technology</p>
+      <p style="color:#60a5fa; margin-top:5px;">2022 – 2026</p>
+    </div>
+    <div class="cgpa">
+      <div class="cgpa-number">7.56</div>
+      <div class="cgpa-label">CGPA / 10</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-title">📜 Certifications</div>
+  <div class="section-divider"></div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🐍</div>
+      <div class="cert-info">
+        <h3>Python Programming</h3>
+        <p>Cisco</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">💻</div>
+      <div class="cert-info">
+        <h3>Full Stack Web Development</h3>
+        <p>Edureka</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🤖</div>
+      <div class="cert-info">
+        <h3>Artificial Intelligence</h3>
+        <p>Native Techno</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-title">📬 Contact Me</div>
+  <div class="section-divider"></div>
+  <div class="contact-grid">
+    <a class="contact-item" href="mailto:shaikmuskanofficial02@gmail.com">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-info">
+        <p>Email</p>
+        <span>shaikmuskanofficial02@gmail.com</span>
+      </div>
+    </a>
+    <a class="contact-item" href="https://github.com/Smuskan3145" target="_blank">
+      <div class="contact-icon">🐙</div>
+      <div class="contact-info">
+        <p>GitHub</p>
+        <span>github.com/Smuskan3145</span>
+      </div>
+    </a>
+    <a class="contact-item" href="https://www.linkedin.com/in/shaik-m-0b6963264" target="_blank">
+      <div class="contact-icon">💼</div>
+      <div class="contact-info">
+        <p>LinkedIn</p>
+        <span>linkedin.com/in/shaik-m-0b6963264</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 <span>Shaik Muskan</span> — Designed with ❤️
+</footer>
+
+</body>
 </html>
